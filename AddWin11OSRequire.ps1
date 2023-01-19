@@ -34,7 +34,7 @@ try {
         "Client2" { $ns = "root\sms\site_def"; }
         "Client3" { $ns = "root\sms\site_ghi"; }
         "Client4"   {
-            if($env:ComputerName -eq "DTP-SCCM-V000") {
+            if($env:ComputerName -eq "SRV-CLIENT4-CM1") {
                 $ns = "root\sms\site_jkl";
             } else {
                 $ns = "root\sms\site_mno"
@@ -126,7 +126,7 @@ $ToBeFinalized = $ToBeProcessed.Where({
 }) | Sort-Object ApplicationPath, ApplicationName
 
 $objpath = ""
-foreach($app in $ToBeFinalized[0..24]) {
+foreach($app in $ToBeFinalized) {
     if($objPath -eq "") {
         Write-Verbose "Starting in folder $($app.applicationpath)..." -Verbose
     } else {
